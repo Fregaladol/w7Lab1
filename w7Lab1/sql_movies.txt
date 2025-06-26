@@ -1,0 +1,137 @@
+Insertar peliculas 
+
+INSERT INTO movies (title, protagonist, year, genre, box_office) VALUES
+('The Empire Strikes Back', 'Mark Hamill', 1980, 'Ciencia ficción', 538375067),
+('Raiders of the Lost Ark', 'Harrison Ford', 1981, 'Aventura', 474171806),
+('E.T. the Extra‑Terrestrial', 'Henry Thomas', 1982, 'Ciencia ficción', 792942069),
+('Return of the Jedi', 'Mark Hamill', 1983, 'Ciencia ficción', 374200000),
+('Beverly Hills Cop', 'Eddie Murphy', 1984, 'Comedia/Policíaco', 234760478),
+('Back to the Future', 'Michael J. Fox', 1985, 'Ciencia ficción/Aventura', 381109762),
+('Top Gun', 'Tom Cruise', 1986, 'Acción', 357463748),
+('Three Men and a Baby', 'Ted Danson', 1987, 'Comedia', 167780960),
+('Rain Man', 'Dustin Hoffman', 1988, 'Drama', 172825435),
+('Batman', 'Michael Keaton', 1989, 'Superhéroes', 411348924),
+('Home Alone', 'Macaulay Culkin', 1990, 'Comedia familiar', 285761243),
+('Beauty and the Beast', 'Paige O’Hara', 1991, 'Animación musical', 204843345),
+('Aladdin', 'Scott Weinger', 1992, 'Animación musical', 217350219),
+('Jurassic Park', 'Sam Neill', 1993, 'Ciencia ficción/Aventura', 357067947),
+('The Lion King', 'Matthew Broderick', 1994, 'Animación musical', 329694499),
+('Toy Story', 'Tom Hanks', 1995, 'Animación/comedia', 191796233),
+('Independence Day', 'Will Smith', 1996, 'Ciencia ficción/Acción', 306169268),
+('Titanic', 'Leonardo DiCaprio', 1997, 'Drama romántico', 2201647264),
+('Armageddon', 'Bruce Willis', 1998, 'Ciencia ficción/Acción', 553709788),
+('Star Wars: Episode I – The Phantom Menace', 'Liam Neeson', 1999, 'Ciencia ficción', 1027082707),
+('Mission: Impossible 2', 'Tom Cruise', 2000, 'Acción', NULL),
+('Harry Potter and the Philosopher’s Stone', 'Daniel Radcliffe', 2001, 'Fantasía', NULL),
+('The Lord of the Rings: The Two Towers', 'Elijah Wood', 2002, 'Fantasía/Aventura', NULL),
+('The Lord of the Rings: The Return of the King', 'Elijah Wood', 2003, 'Fantasía/Aventura', 1142630912),
+('Shrek 2', 'Mike Myers (voz)', 2004, 'Animación/Comedia', NULL),
+('Harry Potter and the Goblet of Fire', 'Daniel Radcliffe', 2005, 'Fantasía', NULL),
+('Pirates of the Caribbean: Dead Man’s Chest', 'Johnny Depp', 2006, 'Aventura', NULL),
+('Pirates of the Caribbean: At World’s End', 'Johnny Depp', 2007, 'Aventura', NULL),
+('The Dark Knight', 'Christian Bale', 2008, 'Superhéroes', 1005973645),
+('Avatar', 'Sam Worthington', 2009, 'Ciencia ficción', 2847246203),
+('Toy Story 3', 'Tom Hanks', 2010, 'Animación', 1066970811),
+('Harry Potter and the Deathly Hallows – Part 2', 'Daniel Radcliffe', 2011, 'Fantasía', 1342321665),
+('The Avengers', 'Robert Downey Jr.', 2012, 'Superhéroes', 1518815515),
+('Frozen', 'Idina Menzel (voz)', 2013, 'Animación musical', 1281835246),
+('Transformers: Age of Extinction', 'Mark Wahlberg', 2014, 'Acción/Sci‑Fi', 1040540720),
+('Star Wars: The Force Awakens', 'Daisy Ridley', 2015, 'Ciencia ficción', 2068455677),
+('Captain America: Civil War', 'Chris Evans', 2016, 'Superhéroes', 1153337496),
+('Frozen II', 'Idina Menzel (voz)', 2017, 'Animación musical', 1450026933),
+('Avengers: Infinity War', 'Robert Downey Jr.', 2018, 'Superhéroes', 2048359754),
+('Avengers: Endgame', 'Robert Downey Jr.', 2019, 'Superhéroes', 2797501328),
+('Demon Slayer: Mugen Train', 'Natsuki Hanae (voz)', 2020, 'Animación', NULL),
+('Spider-Man: No Way Home', 'Tom Holland', 2021, 'Superhéroes', 1922598800),
+('Avatar: The Way of Water', 'Sam Worthington', 2022, 'Ciencia ficción', 2320250281),
+('Barbie', 'Margot Robbie', 2023, 'Comedia/Fantasía', 1447038421),
+('Inside Out 2', 'Amy Poehler (voz)', 2024, 'Animación', 1698863816);
+
+Queries:
+
+- Obtener generos de pelis: 
+	SELECT DISTINCT genre FROM `movies`; 
+
+- Buscar pelis de ciencia ficción: 
+	SELECT title from movies WHERE genre='Ciencia Ficción';
+
+- Ordenar pelis por recaudación (incluye null): 
+	SELECT title, box_office from movies ORDER BY box_office; 
+
+- Ordenar pelis por recaudación (incluye null):  
+	SELECT title, box_office from movies WHERE box_office IS NOT Null ORDER BY box_office; 
+
+- Buscar la pelicula más taquillera de 1984: 
+	SELECT title, year, box_office from movies WHERE box_office IS NOT Null and year = 1984 ORDER BY box_office; 
+
+- Peliculas más taquilleras entre 1984 y 2000 no incluidos usando < >: 
+	SELECT title, year, box_office from movies WHERE box_office IS NOT Null and year > 1984 and year < 2000 ORDER BY year;
+
+- Peliculas de Star Wars: 
+	select title, year from movies where title like 'Star Wars%';  
+
+- Ver solo titulo y año:
+	select title, year from movies; 
+
+- Todas las películas producidas a partir de cierto año, en orden ascendente o descendente:
+	select title, year from movies where year > 1992 ORDER BY year DESC; 
+
+- Ordenar por titulo:
+	select title, year from movies ORDER BY title ASC; 
+
+- Ver solo las pelis con recaudación menor que X:
+	SELECT title, box_office FROM movies where box_office < 200000000 ORDER BY box_office ASC; 
+
+- Ver películas entre un año y otro de producción:
+	SELECT title, year FROM movies where year BETWEEN 2000 AND 2010 ORDER BY year ASC; 
+
+- Ver cuantas pelis hay en la lista:
+	SELECT COUNT(*) FROM movies; 
+
+- Ver la suma de todas las recaudaciones:
+	SELECT SUM(box_office) as total_box_office FROM movies; 
+
+- Ver la media de las recaudaciones:
+	SELECT AVG(box_office) as avg_box_office FROM movies; 
+
+- Mostrar los títulos de las películas del género 'Acción'.
+	SELECT title, year FROM movies WHERE genre = 'Acción' ORDER BY year; 
+
+- Listar todas las películas protagonizadas por Keanu Reeves.
+	SELECT title, year FROM movies where protagonist = 'Keanu Reeves' ORDER BY year; 
+
+- Mostrar las películas que recaudaron más de 100 millones.
+	SELECT title, box_office FROM movies where box_office < 100000000 ORDER BY box_office ASC; 
+
+- Listar las películas cuyo título comienza con "The". 
+	SELECT title, year FROM movies where title like 'The%' ORDER BY year ASC; 
+
+- Ordenar las películas por recaudación de forma descendente.
+	SELECT title, year, box_office FROM movies ORDER BY year DESC; 
+
+- Mostrar las películas ordenadas alfabéticamente por protagonista.
+	SELECT title FROM movies ORDER BY protagonist ASC; 
+
+- Listar los géneros de películas sin repetir (distinct)
+	SELECT DISTINCT genre FROM `movies`; 
+
+- Mostrar todos los protagonistas sin duplicados (distinct)
+	SELECT DISTINCT protagonist FROM movies ORDER BY protagonist ASC; 
+
+- Contar cuántas películas del género drama existen.
+	SELECT COUNT(title) FROM movies where genre = 'Drama'; 
+
+- Mostrar las películas que no tienen recaudación registrada.
+	SELECT title, box_office from movies where box_office is null; 
+
+- Mostrar las películas de ciencia ficción ordenadas por año de forma descendente.
+	SELECT title, genre from movies where genre = 'Ciencia Ficción' ORDER BY year DESC;
+
+- Mostrar las películas cuyo título contiene la letra "i" y se estrenaron después del año 2000.
+	SELECT title, genre from movies where title LIKE '%i%' AND year > 2000; 
+
+- Mostrar la recaudación total de las películas protagonizadas por Leonardo DiCaprio.
+	SELECT protagonist, SUM(box_office)as diCaprio_box_office from movies where protagonist = 'Leonardo DiCaprio'; 
+
+- Calcular el promedio de recaudación agrupado por género de película.
+	SELECT genre, AVG(box_office) AS avg_boxOffice_genre FROM movies GROUP BY genre; 
